@@ -1,0 +1,249 @@
+/* ==========================================================================
+   CCA DEFAULT THEME — LIGHT
+   ==========================================================================
+
+   Purpose:
+   - Provide CCA's official navy-blue and white visual identity.
+   - Maintain accessible text and background contrast.
+   - Support reusable components and corporate website layouts.
+   - Use brand colors from tokens/colors.css.
+
+   ========================================================================== */
+
+:root[data-color-theme="default"][data-theme="light"] {
+  color-scheme: light;
+
+  /* ==========================================================================
+     APPLICATION
+     ========================================================================== */
+
+  --background: var(--white);
+  --background-subtle: var(--gray-50);
+
+  --surface: var(--white);
+  --surface-secondary: var(--gray-50);
+  --surface-tertiary: var(--gray-100);
+
+  --surface-hover: var(--brand-50);
+  --surface-active: var(--brand-100);
+  --surface-selected: var(--brand-100);
+
+  /* ==========================================================================
+     PRIMARY
+     ========================================================================== */
+
+  --primary: var(--brand-800);
+  --primary-hover: var(--brand-900);
+  --primary-active: var(--brand-950);
+
+  --primary-light: var(--brand-100);
+  --primary-subtle: var(--brand-50);
+  --primary-strong: var(--brand-900);
+
+  --on-primary: var(--white);
+
+  /* ==========================================================================
+     TEXT
+     ========================================================================== */
+
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-tertiary: var(--gray-500);
+  --text-disabled: var(--gray-400);
+
+  --text-brand: var(--brand-800);
+  --text-link: var(--brand-800);
+  --text-link-hover: var(--brand-950);
+
+  --text-inverse: var(--white);
+
+  /* ==========================================================================
+     BORDERS
+     ========================================================================== */
+
+  --border: var(--gray-200);
+  --border-hover: var(--brand-400);
+  --border-active: var(--brand-800);
+  --border-strong: var(--gray-300);
+
+  /* ==========================================================================
+     INPUTS
+     ========================================================================== */
+
+  --input-background: var(--white);
+
+  --input-border: var(--gray-300);
+  --input-border-hover: var(--brand-500);
+  --input-border-focus: var(--brand-800);
+
+  /* ==========================================================================
+     NAVIGATION
+     ========================================================================== */
+
+  --nav-background: var(--white);
+  --nav-text: var(--gray-700);
+
+  --nav-hover-background: var(--brand-50);
+  --nav-hover-text: var(--brand-800);
+
+  --nav-active-background: var(--brand-100);
+  --nav-active-text: var(--brand-900);
+
+  /* ==========================================================================
+     SIDEBAR
+     ========================================================================== */
+
+  --sidebar-background: var(--white);
+  --sidebar-border: var(--gray-200);
+
+  --sidebar-item-hover: var(--brand-50);
+  --sidebar-item-active: var(--brand-100);
+  --sidebar-item-active-text: var(--brand-900);
+
+  /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
+
+  /* Primary */
+
+  --button-primary-background: var(--brand-800);
+  --button-primary-hover: var(--brand-900);
+  --button-primary-active: var(--brand-950);
+  --button-primary-text: var(--white);
+
+  /* Secondary */
+
+  --button-secondary-background: var(--brand-50);
+  --button-secondary-hover: var(--brand-100);
+  --button-secondary-text: var(--brand-800);
+
+  /* Danger */
+
+  --button-danger-background: var(--red-700);
+  --button-danger-hover: var(--red-800);
+  --button-danger-active: var(--red-900);
+  --button-danger-text: var(--white);
+
+  /* ==========================================================================
+     TABLES
+     ========================================================================== */
+
+  --table-header-background: var(--gray-50);
+  --table-row-hover: var(--brand-50);
+  --table-row-selected: var(--brand-100);
+
+  /* ==========================================================================
+     FOCUS AND SELECTION
+     ========================================================================== */
+
+  --focus-ring: var(--brand-700);
+
+  --selection-background: var(--brand-200);
+  --selection-text: var(--brand-950);
+
+  /* ==========================================================================
+     OVERLAY
+     ========================================================================== */
+
+  --overlay-background: rgb(15 23 42 / 55%);
+
+  /* ==========================================================================
+     FUNCTIONAL FEEDBACK
+     ========================================================================== */
+
+  --success: var(--green-700);
+  --warning: var(--yellow-700);
+  --danger: var(--red-700);
+  --info: var(--blue-700);
+
+  --alert-primary: var(--brand-800);
+  --alert-success: var(--success);
+  --alert-warning: var(--warning);
+  --alert-danger: var(--danger);
+  --alert-info: var(--info);
+
+  --alert-on-solid: var(--white);
+
+  /* ==========================================================================
+     BADGES
+     ========================================================================== */
+
+  /* Neutral */
+
+  --badge-neutral-background: var(--gray-100);
+  --badge-neutral-border: var(--gray-200);
+  --badge-neutral-text: var(--gray-700);
+
+  /* Primary */
+
+  --badge-primary-background: var(--brand-50);
+  --badge-primary-border: var(--brand-200);
+  --badge-primary-text: var(--brand-900);
+
+  /* Success */
+
+  --badge-success-background: var(--green-50);
+  --badge-success-border: var(--green-200);
+  --badge-success-text: var(--green-800);
+
+  /* Warning */
+
+  --badge-warning-background: var(--yellow-50);
+  --badge-warning-border: var(--yellow-200);
+  --badge-warning-text: var(--yellow-800);
+
+  /* Danger */
+
+  --badge-danger-background: var(--red-50);
+  --badge-danger-border: var(--red-200);
+  --badge-danger-text: var(--red-800);
+
+  /* Info */
+
+  --badge-info-background: var(--blue-50);
+  --badge-info-border: var(--blue-200);
+  --badge-info-text: var(--blue-800);
+
+  /* ==========================================================================
+     CCA GLOBAL STYLE COMPATIBILITY
+     ========================================================================== */
+
+  /* Surfaces */
+
+  --surface-page: var(--background);
+  --surface-section: var(--background-subtle);
+  --surface-card: var(--surface);
+  --surface-raised: var(--surface);
+  --surface-inverse: var(--brand-800);
+
+  /* Text */
+
+  --text-muted: var(--text-tertiary);
+
+  /* Actions */
+
+  --action-primary: var(--button-primary-background);
+  --action-primary-hover: var(--button-primary-hover);
+  --action-primary-text: var(--button-primary-text);
+
+  --action-secondary: var(--button-secondary-background);
+  --action-secondary-text: var(--button-secondary-text);
+
+  /* Borders */
+
+  --border-color: var(--border);
+  --border-color-strong: var(--border-strong);
+
+  /* Focus */
+
+  --focus-color: var(--focus-ring);
+
+  /* Links */
+
+  --link-color: var(--text-link);
+  --link-hover: var(--text-link-hover);
+
+  /* Selection */
+
+  --selection-bg: var(--selection-background);
+}

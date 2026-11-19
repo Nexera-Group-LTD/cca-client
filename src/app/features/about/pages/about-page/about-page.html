@@ -1,0 +1,170 @@
+<article class="about-page" aria-labelledby="about-title">
+  <!-- INTRO -->
+  <section class="about-hero" aria-labelledby="about-title">
+    <div class="about-container about-hero__inner">
+      <div class="about-hero__copy">
+        <div class="about-eyebrow"><span class="about-eyebrow__line"></span>ABOUT CCA <span
+            class="about-eyebrow__number">/ 01</span></div>
+        <h1 id="about-title" class="about-hero__title">
+          Communication that <em>builds trust.</em>
+        </h1>
+        <p class="about-hero__lead">Corporate Communication Advisory is a Rwanda-focused strategic communication
+          advisory firm.</p>
+        <p class="about-hero__description">We help organizations communicate clearly, strengthen their reputations and
+          build meaningful relationships with the people who matter to them.</p>
+        <div class="about-hero__actions">
+          <a class="about-link-button about-link-button--primary" routerLink="/services">
+            Explore our expertise <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+          <a class="about-link-button about-link-button--text" routerLink="/contact">
+            Talk to our team <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="about-hero__visual" aria-label="CCA strategic communication illustration" role="img">
+        <div class="about-hero__visual-grid" aria-hidden="true"></div>
+        <span class="about-hero__visual-top">CORPORATE COMMUNICATION ADVISORY</span>
+        <div class="about-hero__visual-center">
+          <span class="about-hero__visual-ring" aria-hidden="true"></span>
+          <span class="about-hero__visual-monogram">CCA<span>.</span></span>
+          <span class="about-hero__visual-statement">Clarity<span class="about-hero__visual-separator">/</span>
+            Credibility<span class="about-hero__visual-separator">/</span> Trust</span>
+        </div>
+        <div class="about-hero__visual-bottom"><span>RWANDA &amp; THE REGION</span><i class="fa-solid fa-arrow-up-right"
+            aria-hidden="true"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="about-section about-intro" aria-labelledby="about-intro-heading">
+    <div class="about-container about-intro__grid">
+      <div class="about-section-label"><span class="about-section-label__index">01</span> WHO WE ARE</div>
+      <div class="about-intro__body">
+        <h2 id="about-intro-heading" class="about-section-title">Strategic thinking.<br /><span>Meaningful
+            communication.</span></h2>
+        <div class="about-intro__columns">
+          <p>CCA provides professional, strategic and ethical communication solutions to government institutions,
+            corporations, non-governmental organizations and development partners.</p>
+          <p>Our work brings together strategic communication planning, media engagement, crisis advisory, public
+            affairs, executive communication, event management, visual communication and training.</p>
+        </div>
+        <p class="about-intro__note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> We go beyond
+          traditional public relations to support institutional credibility and long-term stakeholder confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION -->
+  <section class="about-section about-direction" aria-labelledby="about-direction-heading">
+    <div class="about-container">
+      <div class="about-section-header">
+        <div class="about-section-label"><span class="about-section-label__index">02</span> OUR DIRECTION</div>
+        <h2 id="about-direction-heading" class="about-section-title">Purpose at the heart<br /><span>of every
+            message.</span></h2>
+      </div>
+      <div class="about-direction__grid">
+        <div class="about-direction__card about-direction__card--vision">
+          <div class="about-direction__card-head"><span>01 / VISION</span><i class="fa-regular fa-eye"
+              aria-hidden="true"></i></div>
+          <h3>Our vision</h3>
+          <p>To become a trusted communication advisory firm shaping strong institutional reputations in Rwanda and the
+            region.</p>
+          <span class="about-direction__card-decor" aria-hidden="true">01</span>
+        </div>
+        <div class="about-direction__card about-direction__card--mission">
+          <div class="about-direction__card-head"><span>02 / MISSION</span><i class="fa-solid fa-bullseye"
+              aria-hidden="true"></i></div>
+          <h3>Our mission</h3>
+          <p>To support organizations with strategic communication planning, media engagement, crisis management, and
+            brand positioning that build trust and impact.</p>
+          <span class="about-direction__card-decor" aria-hidden="true">02</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVES -->
+  <section class="about-section about-objectives" aria-labelledby="about-objectives-heading">
+    <div class="about-container">
+      <div class="about-section-header about-section-header--split">
+        <div>
+          <div class="about-section-label"><span class="about-section-label__index">03</span> CORE OBJECTIVES</div>
+          <h2 id="about-objectives-heading" class="about-section-title">What drives <span>our work.</span></h2>
+        </div>
+        <p>Practical communication support that helps organizations navigate challenges, protect reputations and engage
+          effectively.</p>
+      </div>
+      <div class="about-objectives__grid">
+        @for (objective of objectives; track objective.number) {
+        <div class="about-objectives__card">
+          <div class="about-objectives__card-top"><span>{{ objective.number }}</span><i [class]="objective.icon"
+              aria-hidden="true"></i></div>
+          <h3>{{ objective.title }}</h3>
+          <p>{{ objective.description }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="about-section about-approach" aria-labelledby="about-approach-heading">
+    <div class="about-container about-approach__grid">
+      <div class="about-approach__intro">
+        <div class="about-section-label about-section-label--light"><span class="about-section-label__index">04</span>
+          OUR APPROACH</div>
+        <h2 id="about-approach-heading" class="about-section-title about-section-title--light">Advice grounded<br />in
+          <span>understanding.</span>
+        </h2>
+        <p>We combine strategic thinking, practical experience, local knowledge and professional communication standards
+          to develop solutions that respond to each organization’s goals.</p>
+        <a class="about-link-button about-link-button--light" routerLink="/contact">Start a conversation <i
+            class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </div>
+      <ol class="about-approach__steps">
+        @for (step of approach; track step.number) {
+        <li class="about-approach__step">
+          <span class="about-approach__number">{{ step.number }}</span>
+          <div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+          </div>
+        </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- WHAT SETS US APART -->
+  <section class="about-section about-strengths" aria-labelledby="about-strengths-heading">
+    <div class="about-container about-strengths__grid">
+      <div>
+        <div class="about-section-label"><span class="about-section-label__index">05</span> WHY CCA</div>
+        <h2 id="about-strengths-heading" class="about-section-title">Rooted locally.<br /><span>Focused
+            strategically.</span></h2>
+        <p class="about-strengths__intro">CCA’s advisory-driven approach reflects the communication environment of
+          Rwanda’s institutions and organizations.</p>
+      </div>
+      <ul class="about-strengths__list">
+        @for (strength of strengths; track strength; let i = $index) {
+        <li><span class="about-strengths__count">0{{ i + 1 }}</span><span>{{ strength }}</span><i
+            class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="about-close" aria-labelledby="about-close-heading">
+    <div class="about-container about-close__inner">
+      <div>
+        <div class="about-section-label"><span class="about-section-label__index">LET'S CONNECT</span></div>
+        <h2 id="about-close-heading">Strong relationships start<br />with <em>clear communication.</em></h2>
+      </div>
+      <a class="about-link-button about-link-button--primary" routerLink="/contact">Request a consultation <i
+          class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,208 @@
+/* ==========================================================================
+   ALERT CONTAINER
+   ==========================================================================
+
+   Responsibilities:
+   - Toast positioning
+   - Toast stacking
+   - Dialog presentation
+   - Backdrop animation
+   - Responsive behavior
+
+   ========================================================================== */
+
+:host {
+  display: contents;
+}
+
+/* ==========================================================================
+   TOAST STACKS
+   ========================================================================== */
+
+.alert-stack {
+  position: fixed;
+
+  z-index: var(--z-toast);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-3);
+
+  width: min(calc(100vw - var(--space-8)),
+      26rem);
+
+  max-height: calc(100dvh - var(--space-8));
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: var(--space-1);
+
+  pointer-events: none;
+
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+}
+
+/* ==========================================================================
+   TOAST ITEMS
+   ========================================================================== */
+
+.alert-stack__item {
+  flex: 0 0 auto;
+
+  width: 100%;
+  min-width: 0;
+
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   TOP LEFT
+   ========================================================================== */
+
+.alert-stack--top-left {
+  top: max(var(--space-4),
+      env(safe-area-inset-top, 0px));
+
+  left: max(var(--space-4),
+      env(safe-area-inset-left, 0px));
+}
+
+/* ==========================================================================
+   TOP RIGHT
+   ========================================================================== */
+
+.alert-stack--top-right {
+  top: max(var(--space-4),
+      env(safe-area-inset-top, 0px));
+
+  right: max(var(--space-4),
+      env(safe-area-inset-right, 0px));
+}
+
+/* ==========================================================================
+   TOP CENTER
+   ========================================================================== */
+
+.alert-stack--center {
+  top: max(var(--space-4),
+      env(safe-area-inset-top, 0px));
+
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+/* ==========================================================================
+   DIALOG
+   ========================================================================== */
+
+.alert-dialog {
+  width: min(calc(100vw - var(--space-8)),
+      30rem);
+
+  max-width: 30rem;
+
+  max-height: calc(100dvh - var(--space-8));
+
+  padding: 0;
+  margin: auto;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border: 0;
+  border-radius: var(--radius-2xl);
+
+  background: var(--surface);
+  color: var(--text-primary);
+
+  box-shadow: var(--shadow-modal);
+
+  color-scheme: inherit;
+
+  overscroll-behavior: contain;
+}
+
+/* ==========================================================================
+   BACKDROP
+   ========================================================================== */
+
+.alert-dialog::backdrop {
+  background: var(--overlay-background);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  animation:
+    alert-backdrop-enter 220ms var(--ease-enter) both;
+}
+
+.alert-dialog--closing::backdrop {
+  animation:
+    alert-backdrop-exit 180ms var(--ease-exit) both;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes alert-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes alert-backdrop-exit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 35.999rem) {
+  .alert-stack {
+    width: calc(100vw - var(--space-6));
+
+    max-height: calc(100dvh - var(--space-6));
+  }
+
+  .alert-stack--top-left {
+    left: var(--space-3);
+  }
+
+  .alert-stack--top-right {
+    right: var(--space-3);
+  }
+
+  .alert-dialog {
+    width: calc(100vw - var(--space-6));
+
+    max-height: calc(100dvh - var(--space-6));
+
+    border-radius: var(--radius-xl);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .alert-dialog::backdrop {
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,143 @@
+/* ==========================================================================
+   LOADER COMPONENT
+   ==========================================================================
+
+   Purpose:
+   - Display loading progress.
+   - Support three spinner sizes.
+   - Inherit parent colors or use theme primary.
+   - Respect reduced-motion preferences.
+   - Maintain accessibility and theme compatibility.
+
+   ========================================================================== */
+
+/* ==========================================================================
+   HOST
+   ========================================================================== */
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+.loader {
+  --loader-size: var(--space-6);
+  --loader-border-width: 0.15rem;
+  --loader-duration: 700ms;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  width: var(--loader-size);
+  height: var(--loader-size);
+
+  color: inherit;
+
+  line-height: 1;
+}
+
+/* ==========================================================================
+   SPINNER
+   ========================================================================== */
+
+.loader__spinner {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border:
+    var(--loader-border-width) solid currentColor;
+
+  border-right-color: transparent;
+
+  border-radius: var(--radius-full);
+
+  opacity: 0.9;
+
+  animation:
+    loader-spin var(--loader-duration) linear infinite;
+}
+
+/* ==========================================================================
+   SIZES
+   ========================================================================== */
+
+/* Small — 16px */
+
+.loader--small {
+  --loader-size: var(--space-4);
+  --loader-border-width: 0.125rem;
+}
+
+/* Medium — 24px */
+
+.loader--medium {
+  --loader-size: var(--space-6);
+  --loader-border-width: 0.15rem;
+}
+
+/* Large — 36px */
+
+.loader--large {
+  --loader-size: var(--space-9);
+  --loader-border-width: 0.2rem;
+}
+
+/* ==========================================================================
+   PRIMARY COLOR
+   ========================================================================== */
+
+.loader--primary {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   ANIMATION
+   ========================================================================== */
+
+@keyframes loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .loader__spinner {
+    animation: none;
+
+    border-color: currentColor;
+    border-right-color: transparent;
+  }
+}
+
+/* ==========================================================================
+   FORCED COLORS
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  .loader {
+    color: CanvasText;
+    forced-color-adjust: auto;
+  }
+}

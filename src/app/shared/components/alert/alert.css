@@ -1,0 +1,633 @@
+/* ==========================================================================
+   ALERT COMPONENT
+   ==========================================================================
+
+   Supports:
+   - Toast notifications
+   - Centered popups
+   - Confirmation dialogs
+   - Solid, soft and outline appearances
+   - Default, Blue and Green themes
+   - Light and dark modes
+   - Responsive layouts
+   - Reduced-motion preferences
+
+   ========================================================================== */
+
+:host {
+  display: block;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+.alert {
+  --alert-tone: var(--alert-primary, var(--primary));
+  --alert-solid-text: var(--on-primary);
+  --alert-soft-background: var(--primary-subtle);
+  --alert-icon-background: var(--primary-light);
+
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: var(--space-3);
+
+  width: 100%;
+  min-width: 0;
+
+  padding: var(--space-4);
+
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-card-sm);
+
+  background: var(--surface);
+  color: var(--text-primary);
+
+  box-shadow: var(--shadow-card);
+
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================================
+   COLORS
+   ========================================================================== */
+
+.alert--primary,
+.alert--confirmation {
+  --alert-tone: var(--alert-primary, var(--primary));
+  --alert-solid-text: var(--on-primary);
+  --alert-soft-background: var(--primary-subtle);
+  --alert-icon-background: var(--primary-light);
+}
+
+.alert--success {
+  --alert-tone: var(--alert-success, var(--success));
+  --alert-solid-text: var(--alert-on-solid);
+  --alert-soft-background:
+    var(--badge-success-background);
+  --alert-icon-background:
+    var(--badge-success-background);
+}
+
+.alert--warning {
+  --alert-tone: var(--alert-warning, var(--warning));
+  --alert-solid-text: var(--alert-on-solid);
+  --alert-soft-background:
+    var(--badge-warning-background);
+  --alert-icon-background:
+    var(--badge-warning-background);
+}
+
+.alert--danger {
+  --alert-tone: var(--alert-danger, var(--danger));
+  --alert-solid-text: var(--alert-on-solid);
+  --alert-soft-background:
+    var(--badge-danger-background);
+  --alert-icon-background:
+    var(--badge-danger-background);
+}
+
+.alert--info {
+  --alert-tone: var(--alert-info, var(--info));
+  --alert-solid-text: var(--alert-on-solid);
+  --alert-soft-background:
+    var(--badge-info-background);
+  --alert-icon-background:
+    var(--badge-info-background);
+}
+
+/* ==========================================================================
+   APPEARANCES
+   ========================================================================== */
+
+/* Solid */
+
+.alert--solid {
+  border-color: var(--alert-tone);
+
+  background: var(--alert-tone);
+  color: var(--alert-solid-text);
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* Soft */
+
+.alert--soft {
+  border-color:
+    color-mix(in srgb,
+      var(--alert-tone) 18%,
+      transparent);
+
+  background: var(--alert-soft-background);
+  color: var(--alert-tone);
+}
+
+/* Outline */
+
+.alert--outline {
+  border-color:
+    color-mix(in srgb,
+      var(--alert-tone) 45%,
+      var(--border));
+
+  background: var(--surface);
+  color: var(--alert-tone);
+}
+
+/* ==========================================================================
+   ICON
+   ========================================================================== */
+
+.alert__icon {
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  width: var(--space-9);
+  height: var(--space-9);
+
+  border-radius: var(--radius-md);
+
+  background: var(--alert-icon-background);
+  color: var(--alert-tone);
+
+  font-size: var(--font-size-lg);
+  line-height: 1;
+}
+
+.alert__icon i {
+  display: inline-block;
+  line-height: 1;
+}
+
+.alert--solid .alert__icon {
+  background:
+    color-mix(in srgb,
+      currentColor 14%,
+      transparent);
+
+  color: inherit;
+}
+
+.alert--outline .alert__icon {
+  background:
+    color-mix(in srgb,
+      var(--alert-tone) 8%,
+      var(--surface));
+}
+
+/* ==========================================================================
+   BODY
+   ========================================================================== */
+
+.alert__body {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-1);
+
+  min-width: 0;
+}
+
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+
+.alert__title {
+  margin: 0;
+
+  color: inherit;
+
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* ==========================================================================
+   MESSAGE
+   ========================================================================== */
+
+.alert__message {
+  margin: 0;
+
+  color: inherit;
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+
+  line-height: var(--line-height-relaxed);
+
+  overflow-wrap: anywhere;
+}
+
+.alert--soft .alert__message,
+.alert--outline .alert__message {
+  color: var(--text-secondary);
+}
+
+.alert--solid .alert__message {
+  color: inherit;
+}
+
+/* ==========================================================================
+   ACTIONS
+   ========================================================================== */
+
+.alert__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: var(--space-2);
+
+  margin-block-start: var(--space-3);
+}
+
+.alert__actions app-button {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   DISMISS BUTTON
+   ========================================================================== */
+
+.alert__close {
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  width: var(--space-8);
+  height: var(--space-8);
+
+  margin: calc(-1 * var(--space-1));
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--radius-md);
+
+  background: transparent;
+  color: inherit;
+
+  font-size: var(--font-size-sm);
+  line-height: 1;
+
+  cursor: pointer;
+
+  opacity: 0.75;
+
+  transition:
+    opacity var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.alert__close:hover {
+  opacity: 1;
+
+  background:
+    color-mix(in srgb,
+      currentColor 10%,
+      transparent);
+}
+
+.alert__close:active {
+  background:
+    color-mix(in srgb,
+      currentColor 16%,
+      transparent);
+}
+
+.alert__close:focus-visible {
+  outline:
+    var(--border-width-medium) solid currentColor;
+
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   TOASTS
+   ========================================================================== */
+
+.alert--toast-left,
+.alert--toast-right,
+.alert--toast-center {
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-dropdown);
+}
+
+/* Toast enter */
+
+.alert--toast-right {
+  animation:
+    alert-enter-right 220ms var(--ease-enter) both;
+}
+
+.alert--toast-left {
+  animation:
+    alert-enter-left 220ms var(--ease-enter) both;
+}
+
+.alert--toast-center {
+  animation:
+    alert-enter-top 220ms var(--ease-enter) both;
+}
+
+/* Toast exit */
+
+.alert--toast-right.alert--closing {
+  pointer-events: none;
+
+  animation:
+    alert-exit-right 180ms var(--ease-exit) both;
+}
+
+.alert--toast-left.alert--closing {
+  pointer-events: none;
+
+  animation:
+    alert-exit-left 180ms var(--ease-exit) both;
+}
+
+.alert--toast-center.alert--closing {
+  pointer-events: none;
+
+  animation:
+    alert-exit-top 180ms var(--ease-exit) both;
+}
+
+/* ==========================================================================
+   CENTERED POPUP / CONFIRMATION
+   ========================================================================== */
+
+.alert--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: var(--space-5);
+
+  width: 100%;
+
+  padding:
+    var(--space-8) var(--space-6);
+
+  border: var(--border-default);
+
+  border-radius: var(--radius-2xl);
+
+  background: var(--surface);
+  color: var(--text-primary);
+
+  box-shadow: var(--shadow-modal);
+
+  text-align: center;
+
+  transform-origin: center;
+
+  animation:
+    alert-dialog-enter 220ms var(--ease-enter) both;
+}
+
+.alert--centered.alert--closing {
+  pointer-events: none;
+
+  animation:
+    alert-dialog-exit 180ms var(--ease-exit) both;
+}
+
+/* Centered icon */
+
+.alert--centered .alert__icon {
+  width: var(--space-16);
+  height: var(--space-16);
+
+  border-radius: var(--radius-xl);
+
+  background: var(--alert-soft-background);
+  color: var(--alert-tone);
+
+  font-size: var(--font-size-3xl);
+}
+
+/* Centered body */
+
+.alert--centered .alert__body {
+  align-items: center;
+
+  width: 100%;
+  gap: var(--space-3);
+}
+
+/* Centered title */
+
+.alert--centered .alert__title {
+  max-width: 26ch;
+
+  color: var(--text-primary);
+
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+
+  text-wrap: balance;
+}
+
+/* Centered message */
+
+.alert--centered .alert__message {
+  max-width: 48ch;
+
+  color: var(--text-secondary);
+
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+
+  text-wrap: pretty;
+}
+
+/* Centered actions */
+
+.alert--centered .alert__actions {
+  justify-content: center;
+
+  width: 100%;
+
+  gap: var(--space-3);
+
+  margin-block-start: var(--space-4);
+}
+
+/* Centered close */
+
+.alert--centered .alert__close {
+  position: absolute;
+
+  top: var(--space-4);
+  right: var(--space-4);
+
+  margin: 0;
+
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 35.999rem) {
+  .alert {
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .alert__icon {
+    width: var(--space-8);
+    height: var(--space-8);
+  }
+
+  .alert--centered {
+    padding:
+      var(--space-8) var(--space-4);
+
+    gap: var(--space-4);
+  }
+
+  .alert--centered .alert__icon {
+    width: var(--space-14);
+    height: var(--space-14);
+  }
+
+  .alert--centered .alert__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .alert--centered .alert__actions app-button {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes alert-enter-right {
+  from {
+    opacity: 0;
+    transform: translateX(var(--space-6));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes alert-exit-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(var(--space-6));
+  }
+}
+
+@keyframes alert-enter-left {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--space-6)));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes alert-exit-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--space-6)));
+  }
+}
+
+@keyframes alert-enter-top {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--space-4)));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes alert-exit-top {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--space-4)));
+  }
+}
+
+@keyframes alert-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-3)) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes alert-dialog-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(var(--space-2)) scale(0.97);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .alert {
+    animation-duration: 0.01ms !important;
+  }
+}

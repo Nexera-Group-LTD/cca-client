@@ -1,0 +1,227 @@
+<article class="home-page">
+  <!-- HERO: content and visual change together every five seconds -->
+  <section class="home-hero" aria-label="CCA communication advisory highlights" aria-roledescription="carousel">
+    <div class="home-container home-hero__grid">
+      <div class="home-hero__content">
+        <!-- Recreate only the changing content to restart the entrance animation. -->
+        @for (slide of heroSlides; track $index) {
+        @if (activeSlideIndex === $index) {
+        <div class="home-hero__copy" [attr.aria-label]="'Slide ' + ($index + 1)">
+          <p class="home-eyebrow home-hero__eyebrow home-hero__animate home-hero__animate--eyebrow">
+            <span class="home-eyebrow__line" aria-hidden="true"></span>
+            {{ slide.eyebrow }}
+          </p>
+          <h1 class="home-hero__title home-hero__animate home-hero__animate--title" id="home-title">
+            {{ slide.lead }}
+            <span>{{ slide.highlight }}</span>
+            <span class="home-hero__title-ending">{{ slide.ending }}</span>
+          </h1>
+          <p class="home-hero__description home-hero__animate home-hero__animate--description">
+            {{ slide.description }}
+          </p>
+          <div class="home-hero__actions home-hero__animate home-hero__animate--actions">
+            <a class="home-button home-button--primary" routerLink="/contact">
+              Request a consultation
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+            <a class="home-button home-button--text" routerLink="/services">
+              Explore our services
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        }
+        }
+
+        <div class="home-hero__carousel-controls" aria-label="Hero slide controls">
+          <div class="home-hero__indicators" aria-label="Choose a slide">
+            @for (slide of heroSlides; track $index) {
+            <button type="button" class="home-hero__indicator"
+              [class.home-hero__indicator--active]="activeSlideIndex === $index"
+              [attr.aria-label]="'Show slide ' + ($index + 1) + ' of ' + heroSlides.length"
+              [attr.aria-current]="activeSlideIndex === $index ? 'true' : null" (click)="goToSlide($index)"><span
+                class="home-hero__indicator-fill"></span></button>
+            }
+          </div>
+          <span class="home-hero__slide-count" aria-hidden="true">
+            {{ (activeSlideIndex + 1).toString().padStart(2, '0') }} / {{ heroSlides.length.toString().padStart(2, '0')
+            }}
+          </span>
+          <button type="button" class="home-hero__control" (click)="previousSlide()" aria-label="Previous slide">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="home-hero__control" (click)="nextSlide()" aria-label="Next slide">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="home-hero__control home-hero__control--pause" (click)="toggleAutoplay()"
+            [attr.aria-label]="autoplayPaused ? 'Play automatic slides' : 'Pause automatic slides'">
+            <i [class]="autoplayPaused ? 'fa-solid fa-play' : 'fa-solid fa-pause'" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        @for (slide of heroSlides; track $index) {
+        @if (activeSlideIndex === $index) {
+        <div class="home-hero__footnote home-hero__animate home-hero__animate--footnote">
+          <span class="home-hero__footnote-mark" aria-hidden="true"></span>
+          {{ slide.footnote }}
+        </div>
+        }
+        }
+      </div>
+
+      <!-- The blue panel remains mounted; only the text enters on slide changes. -->
+      <div class="home-hero__visual" aria-hidden="true">
+        <div class="home-hero__visual-grid"></div>
+        <div class="home-hero__orb home-hero__orb--one"></div>
+        <div class="home-hero__orb home-hero__orb--two"></div>
+        @for (slide of heroSlides; track $index) {
+        @if (activeSlideIndex === $index) {
+        <div class="home-hero__visual-content">
+          <span class="home-hero__visual-top home-hero__visual-enter home-hero__visual-enter--top">{{ slide.visualTop
+            }}</span>
+          <span class="home-hero__visual-message home-hero__visual-enter home-hero__visual-enter--message">
+            {{ slide.visualLead }}<br />
+            <em>{{ slide.visualHighlight }}</em>
+          </span>
+          <span class="home-hero__visual-bottom home-hero__visual-enter home-hero__visual-enter--bottom">{{
+            slide.visualBottom }}</span>
+        </div>
+        }
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUCTION -->
+  <section class="home-intro home-section" aria-labelledby="home-intro-title">
+    <div class="home-container home-intro__grid">
+      <div>
+        <p class="home-eyebrow">01 / WHO WE ARE</p>
+        <h2 class="home-heading" id="home-intro-title">
+          Thoughtful communication.<br />Stronger institutions.
+        </h2>
+      </div>
+      <div class="home-intro__body">
+        <p>
+          Corporate Communication Advisory (CCA) is a Rwanda-focused strategic
+          communication firm supporting government institutions, businesses,
+          NGOs, and development partners.
+        </p>
+        <p>
+          Our work goes beyond publicity. We provide practical, ethical advice
+          that helps organizations communicate consistently, protect their
+          reputation, and engage the people who matter.
+        </p>
+        <a class="home-inline-link" routerLink="/about">
+          More about CCA <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="home-services home-section" aria-labelledby="home-services-title">
+    <div class="home-container">
+      <div class="home-section-heading">
+        <div>
+          <p class="home-eyebrow">02 / WHAT WE DO</p>
+          <h2 class="home-heading" id="home-services-title">Expertise that makes<br />a difference.</h2>
+        </div>
+        <p class="home-section-heading__description">
+          Integrated communication services shaped around your institution's
+          priorities and challenges.
+        </p>
+      </div>
+      <div class="home-services__grid">
+        @for (service of services; track service.slug) {
+        <a class="home-service" [routerLink]="['/services', service.slug]">
+          <div class="home-service__top">
+            <span class="home-service__number">{{ service.number }}</span>
+            <i [class]="service.icon" aria-hidden="true"></i>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <span class="home-service__arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+          </span>
+        </a>
+        }
+      </div>
+      <a class="home-inline-link home-services__more" routerLink="/services">
+        View all services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="home-approach home-section" aria-labelledby="home-approach-title">
+    <div class="home-container home-approach__grid">
+      <div class="home-approach__lead">
+        <p class="home-eyebrow home-eyebrow--light">03 / OUR APPROACH</p>
+        <h2 class="home-heading home-heading--light" id="home-approach-title">
+          Strategy first.<br /><span>Trust always.</span>
+        </h2>
+      </div>
+      <div class="home-approach__details">
+        <p>
+          Every organization has a different story, audience, and responsibility.
+          We listen first, then develop communication solutions grounded in local
+          understanding and professional standards.
+        </p>
+        <div class="home-approach__qualities">
+          <span>Strategic thinking</span>
+          <span>Local knowledge</span>
+          <span>Practical execution</span>
+          <span>Professional integrity</span>
+        </div>
+        <a class="home-inline-link home-inline-link--light" routerLink="/about">
+          Discover our approach <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="home-sectors home-section" aria-labelledby="home-sectors-title">
+    <div class="home-container">
+      <div class="home-section-heading">
+        <div>
+          <p class="home-eyebrow">04 / WHO WE SERVE</p>
+          <h2 class="home-heading" id="home-sectors-title">Different sectors.<br />Shared ambition.</h2>
+        </div>
+        <p class="home-section-heading__description">
+          We support organizations whose communication must inspire confidence,
+          enable collaboration, and serve a clear purpose.
+        </p>
+      </div>
+      <div class="home-sectors__grid">
+        @for (sector of sectors; track sector.name) {
+        <div class="home-sector">
+          <i [class]="sector.icon" aria-hidden="true"></i>
+          <h3>{{ sector.name }}</h3>
+        </div>
+        }
+      </div>
+      <a class="home-inline-link home-sectors__more" routerLink="/sectors">
+        Explore the sectors we serve <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="home-contact" aria-labelledby="home-contact-title">
+    <div class="home-container home-contact__inner">
+      <div>
+        <p class="home-eyebrow">LET'S START A CONVERSATION</p>
+        <h2 class="home-heading" id="home-contact-title">
+          Your next conversation could<br />change everything.
+        </h2>
+        <p>Tell us about your communication priorities. We're ready to listen.</p>
+      </div>
+      <a class="home-button home-button--primary" routerLink="/contact">
+        Request a consultation
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+</article>

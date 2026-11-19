@@ -1,0 +1,250 @@
+/* ==========================================================================
+   CCA DEFAULT THEME — DARK
+   ==========================================================================
+
+   Purpose:
+   - Provide a premium dark navy corporate appearance.
+   - Use CCA brand blue accents.
+   - Maintain readable foreground/background contrast.
+   - Support navigation, forms, buttons, badges, and alerts.
+   - Share the same semantic contract as the light theme.
+
+   ========================================================================== */
+
+:root[data-color-theme="default"][data-theme="dark"] {
+  color-scheme: dark;
+
+  /* ==========================================================================
+     APPLICATION
+     ========================================================================== */
+
+  --background: var(--brand-950);
+  --background-subtle: #101d30;
+
+  --surface: #14243a;
+  --surface-secondary: #1a2e49;
+  --surface-tertiary: #223b59;
+
+  --surface-hover: #284767;
+  --surface-active: #305276;
+  --surface-selected: #203f66;
+
+  /* ==========================================================================
+     PRIMARY
+     ========================================================================== */
+
+  --primary: var(--brand-300);
+  --primary-hover: var(--brand-200);
+  --primary-active: var(--brand-100);
+
+  --primary-light: #244669;
+  --primary-subtle: #183351;
+  --primary-strong: var(--brand-200);
+
+  --on-primary: var(--brand-950);
+
+  /* ==========================================================================
+     TEXT
+     ========================================================================== */
+
+  --text-primary: var(--gray-50);
+  --text-secondary: #d4dfec;
+  --text-tertiary: #a9bdd3;
+  --text-disabled: #8396ac;
+
+  --text-brand: var(--brand-200);
+  --text-link: var(--brand-200);
+  --text-link-hover: var(--white);
+
+  --text-inverse: var(--brand-950);
+
+  /* ==========================================================================
+     BORDERS
+     ========================================================================== */
+
+  --border: #314560;
+  --border-hover: var(--brand-400);
+  --border-active: var(--brand-300);
+  --border-strong: #56708e;
+
+  /* ==========================================================================
+     INPUTS
+     ========================================================================== */
+
+  --input-background: var(--surface);
+
+  --input-border: #46617e;
+  --input-border-hover: var(--brand-300);
+  --input-border-focus: var(--brand-200);
+
+  /* ==========================================================================
+     NAVIGATION
+     ========================================================================== */
+
+  --nav-background: #101d30;
+  --nav-text: var(--text-secondary);
+
+  --nav-hover-background: #203a59;
+  --nav-hover-text: var(--brand-200);
+
+  --nav-active-background: #244669;
+  --nav-active-text: var(--white);
+
+  /* ==========================================================================
+     SIDEBAR
+     ========================================================================== */
+
+  --sidebar-background: #101d30;
+  --sidebar-border: var(--border);
+
+  --sidebar-item-hover: #203a59;
+  --sidebar-item-active: #244669;
+  --sidebar-item-active-text: var(--white);
+
+  /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
+
+  /* Primary */
+
+  --button-primary-background: var(--brand-300);
+  --button-primary-hover: var(--brand-200);
+  --button-primary-active: var(--brand-100);
+  --button-primary-text: var(--brand-950);
+
+  /* Secondary */
+
+  --button-secondary-background: #203a59;
+  --button-secondary-hover: #2c5074;
+  --button-secondary-text: var(--brand-100);
+
+  /* Danger */
+
+  --button-danger-background: var(--red-300);
+  --button-danger-hover: var(--red-200);
+  --button-danger-active: var(--red-100);
+  --button-danger-text: var(--red-950);
+
+  /* ==========================================================================
+     TABLES
+     ========================================================================== */
+
+  --table-header-background: #192c45;
+  --table-row-hover: #203a59;
+  --table-row-selected: #244669;
+
+  /* ==========================================================================
+     FOCUS AND SELECTION
+     ========================================================================== */
+
+  --focus-ring: var(--brand-200);
+
+  --selection-background: var(--brand-400);
+  --selection-text: var(--brand-950);
+
+  /* ==========================================================================
+     OVERLAY
+     ========================================================================== */
+
+  --overlay-background: rgb(0 0 0 / 70%);
+
+  /* ==========================================================================
+     FUNCTIONAL FEEDBACK
+     ========================================================================== */
+
+  --success: var(--green-300);
+  --warning: var(--yellow-300);
+  --danger: var(--red-300);
+  --info: var(--blue-300);
+
+  --alert-primary: var(--brand-200);
+  --alert-success: var(--success);
+  --alert-warning: var(--warning);
+  --alert-danger: var(--danger);
+  --alert-info: var(--info);
+
+  --alert-on-solid: var(--brand-950);
+
+  /* ==========================================================================
+     BADGES
+     ========================================================================== */
+
+  /* Neutral */
+
+  --badge-neutral-background: #25364d;
+  --badge-neutral-border: #435a75;
+  --badge-neutral-text: var(--gray-100);
+
+  /* Primary */
+
+  --badge-primary-background: #183351;
+  --badge-primary-border: #416990;
+  --badge-primary-text: var(--brand-100);
+
+  /* Success */
+
+  --badge-success-background: #103727;
+  --badge-success-border: var(--green-700);
+  --badge-success-text: var(--green-200);
+
+  /* Warning */
+
+  --badge-warning-background: #3d2e11;
+  --badge-warning-border: #92712e;
+  --badge-warning-text: var(--yellow-200);
+
+  /* Danger */
+
+  --badge-danger-background: #431e23;
+  --badge-danger-border: #95505a;
+  --badge-danger-text: var(--red-200);
+
+  /* Info */
+
+  --badge-info-background: #18354e;
+  --badge-info-border: #47769b;
+  --badge-info-text: var(--blue-200);
+
+  /* ==========================================================================
+     CCA GLOBAL STYLE COMPATIBILITY
+     ========================================================================== */
+
+  /* Surfaces */
+
+  --surface-page: var(--background);
+  --surface-section: var(--background-subtle);
+  --surface-card: var(--surface);
+  --surface-raised: var(--surface-secondary);
+  --surface-inverse: var(--white);
+
+  /* Text */
+
+  --text-muted: var(--text-tertiary);
+
+  /* Actions */
+
+  --action-primary: var(--button-primary-background);
+  --action-primary-hover: var(--button-primary-hover);
+  --action-primary-text: var(--button-primary-text);
+
+  --action-secondary: var(--button-secondary-background);
+  --action-secondary-text: var(--button-secondary-text);
+
+  /* Borders */
+
+  --border-color: var(--border);
+  --border-color-strong: var(--border-strong);
+
+  /* Focus */
+
+  --focus-color: var(--focus-ring);
+
+  /* Links */
+
+  --link-color: var(--text-link);
+  --link-hover: var(--text-link-hover);
+
+  /* Selection */
+
+  --selection-bg: var(--selection-background);
+}

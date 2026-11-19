@@ -1,0 +1,154 @@
+<article class="team-page" aria-labelledby="team-title">
+  <!-- INTRO -->
+  <section class="team-hero" aria-labelledby="team-title">
+    <div class="team-container team-hero__grid">
+      <div class="team-hero__copy">
+        <p class="team-eyebrow">
+          <span class="team-eyebrow__rule" aria-hidden="true"></span>
+          THE PEOPLE &amp; EXPERTISE BEHIND CCA
+          <span class="team-eyebrow__count">/ 05</span>
+        </p>
+        <h1 id="team-title">Guided by <em>expertise.</em><br />Grounded in <em>trust.</em></h1>
+        <p class="team-hero__lead">
+          Effective communication requires the right thinking, the right experience
+          and a clear understanding of the people it reaches.
+        </p>
+        <p class="team-hero__body">
+          CCA's organizational model brings together strategic advisory leadership,
+          communication expertise, and media and digital support to serve institutions,
+          companies and development partners.
+        </p>
+        <a class="team-link team-link--primary" routerLink="/contact">
+          Talk to CCA
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="team-hero__art" aria-hidden="true">
+        <div class="team-hero__art-grid"></div>
+        <span class="team-hero__art-label">CCA / TEAM &amp; EXPERTISE</span>
+        <div class="team-hero__art-center">
+          <span class="team-hero__art-symbol">C<span>.</span></span>
+          <p>One direction.<br /><strong>Clear communication.</strong></p>
+        </div>
+        <div class="team-hero__art-bottom">
+          <span>STRATEGY</span><span>MEDIA</span><span>ADVISORY</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORGANIZATIONAL STRUCTURE -->
+  <section class="team-section team-structure" aria-labelledby="team-structure-title">
+    <div class="team-container">
+      <div class="team-section__heading">
+        <div>
+          <p class="team-label"><span>01</span> ORGANIZATIONAL STRUCTURE</p>
+          <h2 id="team-structure-title">Expertise across <span>every message.</span></h2>
+        </div>
+        <p>
+          CCA's company profile outlines three complementary roles. The photographs
+          below are illustrative placeholders until individual team profiles are confirmed.
+        </p>
+      </div>
+
+      <div class="team-roles">
+        @for (role of roles; track role.number) {
+        <article class="team-role">
+          <div class="team-role__visual">
+            <img class="team-role__image" [src]="role.image || defaultTeamImage"
+              [alt]="role.name ? 'Portrait of ' + role.name : 'Illustrative portrait for ' + role.title" width="480"
+              height="600" loading="lazy" decoding="async" />
+            @if (!role.image) {
+            <span class="team-role__photo-label">Illustrative portrait</span>
+            }
+          </div>
+
+          <div class="team-role__body">
+            <h3>{{ role.name || role.title }}</h3>
+            @if (role.name) {
+            <p class="team-role__position">{{ role.title }}</p>
+            }
+            <p class="team-role__description">{{ role.focus }}</p>
+
+            @if (role.linkedin || role.x || role.instagram) {
+            <nav class="team-role__socials" [attr.aria-label]="'Social profiles for ' + (role.name || role.title)">
+              @if (role.linkedin) {
+              <a [href]="role.linkedin" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn (opens in a new tab)">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+              }
+              @if (role.x) {
+              <a [href]="role.x" target="_blank" rel="noopener noreferrer" aria-label="X (opens in a new tab)">
+                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+              </a>
+              }
+              @if (role.instagram) {
+              <a [href]="role.instagram" target="_blank" rel="noopener noreferrer"
+                aria-label="Instagram (opens in a new tab)">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+              </a>
+              }
+            </nav>
+            }
+          </div>
+        </article>
+        }
+      </div>
+
+      <!-- <p class="team-structure__note">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        The positions come from CCA's company profile. The same illustrative photograph
+        is shown for each role; it does not identify actual team members.
+      </p> -->
+    </div>
+  </section>
+
+  <!-- COLLABORATIVE APPROACH -->
+  <section class="team-section team-belief" aria-labelledby="team-belief-title">
+    <div class="team-container team-belief__grid">
+      <div>
+        <p class="team-label team-label--light"><span>02</span> OUR SHARED APPROACH</p>
+        <h2 id="team-belief-title">Good advice starts with <span>understanding.</span></h2>
+        <p class="team-belief__description">
+          CCA takes an advisory-driven approach that goes beyond publicity and content
+          management, emphasizing credible messages and meaningful stakeholder relationships.
+        </p>
+        <a class="team-link team-link--light" routerLink="/about">
+          Learn about our approach
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+      <ol class="team-belief__list">
+        @for (principle of principles; track principle.number) {
+        <li>
+          <span class="team-belief__number">{{ principle.number }}</span>
+          <div>
+            <h3>{{ principle.title }}</h3>
+            <p>{{ principle.detail }}</p>
+          </div>
+        </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="team-section team-contact" aria-labelledby="team-contact-title">
+    <div class="team-container team-contact__grid">
+      <div>
+        <p class="team-label"><span>03</span> WORK WITH CCA</p>
+        <h2 id="team-contact-title">Let's build <span>confidence together.</span></h2>
+        <p>
+          Whether you're planning communication activities or navigating a sensitive challenge,
+          CCA can discuss your organization's needs.
+        </p>
+      </div>
+      <a class="team-link team-link--primary" routerLink="/contact">
+        Request a consultation
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,85 @@
+<article class="services-page" aria-labelledby="services-title">
+  <section class="services-hero" aria-labelledby="services-title">
+    <div class="services-container services-hero__layout">
+      <div class="services-hero__copy">
+        <p class="services-eyebrow"><span class="services-eyebrow__line" aria-hidden="true"></span> OUR EXPERTISE <span
+            class="services-eyebrow__index">/ 01</span></p>
+        <h1 id="services-title">Communication expertise for <em>lasting trust.</em></h1>
+        <p class="services-hero__lead">Strategic communication, reputation, media and public affairs advice for
+          organizations navigating important communication challenges.</p>
+        <a class="services-text-link" routerLink="/contact">Discuss your communication needs <i
+            class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </div>
+      <div class="services-hero__graphic" role="img"
+        aria-label="CCA advisory practice areas: strategy, reputation and engagement">
+        <div class="services-hero__grid" aria-hidden="true"></div>
+        <div class="services-hero__graphic-top"><span>CCA / AREAS OF EXPERTISE</span><span>07 SERVICES</span></div>
+        <div class="services-hero__graphic-center"><span class="services-hero__graphic-mark"
+            aria-hidden="true">C<span>.</span></span>
+          <p>Think strategically.<br>Communicate clearly.<br>Build confidence.</p>
+        </div>
+        <div class="services-hero__graphic-bottom">STRATEGY <span>·</span> REPUTATION <span>·</span> ENGAGEMENT</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-catalog services-section" aria-labelledby="services-catalog-title">
+    <div class="services-container">
+      <div class="services-section__heading">
+        <div>
+          <p class="services-section__label">01 / WHAT WE DO</p>
+          <h2 id="services-catalog-title">Seven areas of <span>expertise.</span></h2>
+        </div>
+        <p>CCA combines strategic insight, practical communication solutions and a strong understanding of Rwanda's
+          institutional context.</p>
+      </div>
+      <div class="services-catalog__grid">
+        @for (service of services; track service.slug) {
+        <article class="services-card">
+          <div class="services-card__top"><span class="services-card__number">{{ service.number }} / 07</span><i
+              [class]="service.icon" aria-hidden="true"></i></div>
+          <p class="services-card__category">{{ service.category }}</p>
+          <h3><a [routerLink]="['/services', service.slug]">{{ service.title }}</a></h3>
+          <p class="services-card__summary">{{ service.summary }}</p>
+          <a class="services-card__explore" [routerLink]="['/services', service.slug]"
+            [attr.aria-label]="'Explore ' + service.title">Explore service <i class="fa-solid fa-arrow-up-right"
+              aria-hidden="true"></i></a>
+        </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="services-approach services-section" aria-labelledby="services-approach-heading">
+    <div class="services-container services-approach__layout">
+      <div class="services-approach__intro">
+        <p class="services-section__label services-section__label--light">02 / HOW WE WORK</p>
+        <h2 id="services-approach-heading">More than visibility. <span>Built around credibility.</span></h2>
+      </div>
+      <div class="services-approach__body">
+        <p>Our advisory-driven approach goes beyond publicity and digital posting. We focus on institutional messaging,
+          stakeholder engagement, reputation protection and long-term trust.</p>
+        <ul>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Strategic thinking grounded in institutional
+            objectives</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Local understanding with professional standards</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Practical support for real communication challenges
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-cta services-section" aria-labelledby="services-cta-heading">
+    <div class="services-container services-cta__layout">
+      <div>
+        <p class="services-section__label">03 / LET'S TALK</p>
+        <h2 id="services-cta-heading">Let's make your <span>message matter.</span></h2>
+        <p>Explore how CCA's advisory services can support your organization's communication objectives.</p>
+      </div>
+      <a class="services-button" routerLink="/contact">Request a consultation
+        <i class="fa-solid fa-up-right-from-square"></i>
+      </a>
+    </div>
+  </section>
+</article>

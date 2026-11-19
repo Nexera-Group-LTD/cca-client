@@ -1,0 +1,132 @@
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="site-shell" id="page-top">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__brand" routerLink="/" aria-label="Corporate Communication Advisory — homepage"
+        (click)="closeMenu()">
+        <img class="site-header__logo" [src]="logo" alt="Corporate Communication Advisory" width="150" height="60" />
+        <span class="site-header__brand-divider" aria-hidden="true"></span>
+        <span class="site-header__brand-name">Corporate<br />Communication Advisory</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        @for (item of navigation; track item.path) {
+        <a class="site-nav__link" [routerLink]="item.path" routerLinkActive="site-nav__link--active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }" #active="routerLinkActive"
+          [attr.aria-current]="active.isActive ? 'page' : null">
+          {{ item.label }}
+        </a>
+        }
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="site-header__cta" routerLink="/contact">
+          Let's talk <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        <button #menuToggle class="site-header__toggle" type="button" aria-controls="mobile-navigation"
+          [attr.aria-expanded]="menuOpen" [attr.aria-label]="menuOpen ? 'Close navigation' : 'Open navigation'"
+          (click)="toggleMenu()">
+          <i [class]="menuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav #mobileNavigation id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation" [hidden]="!menuOpen"
+      (focusout)="onMobileNavFocusOut($event)">
+      <div class="container mobile-nav__inner">
+        @for (item of navigation; track item.path; let index = $index) {
+        <a class="mobile-nav__link" [routerLink]="item.path" routerLinkActive="mobile-nav__link--active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }" #active="routerLinkActive"
+          [attr.aria-current]="active.isActive ? 'page' : null" (click)="closeMenu()">
+          <span class="mobile-nav__number">0{{ index + 1 }}</span>
+          <span>{{ item.label }}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        }
+        <p class="mobile-nav__note">Clear communication. Stronger reputations. Lasting trust.</p>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="site-main" tabindex="-1">
+    <router-outlet />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__intro">
+        <div>
+          <p class="site-footer__eyebrow"><span class="site-footer__dot" aria-hidden="true"></span> LET'S CONNECT</p>
+          <h2>Good communication<br /><em>starts a conversation.</em></h2>
+        </div>
+        <a class="site-footer__primary-link" routerLink="/contact">
+          Start a conversation <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <a routerLink="/" class="site-footer__brand" aria-label="CCA — homepage">
+            <img src="/brand/logo-light.png" alt="CCA" width="112" height="52" loading="lazy" />
+          </a>
+          <p>Building trust through strategic communication.</p>
+          <span class="site-footer__location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Rwanda · East
+            Africa</span>
+        </div>
+        <div class="site-footer__links-group">
+          <h3>Explore</h3>
+          <nav aria-label="Footer navigation">
+            <a routerLink="/">Home</a>
+            <a routerLink="/about">About us</a>
+            <a routerLink="/services">Our services</a>
+            <a routerLink="/sectors">Who we serve</a>
+            <a routerLink="/team">Our team</a>
+            <a routerLink="/contact">Contact</a>
+          </nav>
+        </div>
+        <div class="site-footer__links-group">
+          <h3>Our expertise</h3>
+          <nav aria-label="Expertise navigation">
+            <a routerLink="/services">Strategic communication</a>
+            <a routerLink="/services">Reputation management</a>
+            <a routerLink="/services">Media & public affairs</a>
+            <a routerLink="/services">Events & visual communication</a>
+            <a routerLink="/services">Training & capacity building</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ==========================================================
+           FOOTER BOTTOM
+           ========================================================== -->
+
+      <div class="site-footer__bottom">
+
+        <!-- Copyright -->
+        <p class="site-footer__copyright">
+          © {{ year }} {{ companyName }}. All rights reserved.
+        </p>
+
+        <!-- Developer Credit -->
+        <p class="site-footer__credit">
+          Developed &amp; Maintained by
+
+          <a href="https://nexeragroup.rw" target="_blank" rel="noopener noreferrer"
+            aria-label="Visit Nexera Group website (opens in a new tab)">
+            Nexera Group
+
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+        </p>
+
+        <!-- Back to Top -->
+        <button type="button" class="site-footer__top" (click)="scrollToTop()" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </button>
+
+      </div>
+
+    </div>
+  </footer>
+</div>
